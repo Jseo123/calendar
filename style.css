@@ -2,7 +2,7 @@ body{
   display: flex;
   margin-top: 50px;
   justify-content: center;
-  background-color: aliceblue;
+  background-image: url("/img/fondo1.jpg");
 }
 button{
   width: 75px;
@@ -16,14 +16,15 @@ button{
 }
 #header{
   padding: 10px;
-  color: #d36c6c;
+  color: #f8f1f1;
+  background-color: thistle;
   font-size: 26px;
   font-family: sans-serif;
   display: flex;
   justify-content: space-between;
 }
 #header button{
-  background-color: #92a1d1;
+  background-color: #7882a5;
 }
 #container{
   width: 770px;
@@ -31,7 +32,7 @@ button{
 #weekdays{
   width: 100%;
   display: flex;
-  color: #247ba0;
+  color: #ffffff;
 }
 #weekdays div {
   width: 100px;
