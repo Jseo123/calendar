@@ -23,6 +23,7 @@ function load() {
     });
 
     const paddingDays = weekdays.indexOf(dateString.split(", ")[0]);
+    document.getElementById("monthDisplay").innerText = dt.toLocaleDateString("en-GB", {month: "long"})+ " " + year;
 
     for(let i = 1; i <= paddingDays + daysInMonth; i++) {
         const daySquare = document.createElement("div");
