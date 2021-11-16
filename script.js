@@ -7,7 +7,7 @@ const newEventModal = document.getElementById("newEventModal")
 const deleteEventModal = document.getElementById("deleteEventModal")
 const backDrop = document.getElementById("modalBackDrop")
 const eventTitleInput = document.getElementById("eventTitleInput")
-const weekdays = ["Sunday", "Monday", "Tuesday", "Wenesday", "Thursday", "Friday", "Saturday" ];
+const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
 function openModal(date) {
     clicked = date;
@@ -44,12 +44,19 @@ function load() {
         day: "numeric"
     });
 
+    let weekdayStrings = firstDayOfNMonth.toLocaleDateString("en-GB", {
+        weekday: "long"
+    });
+
     const paddingDays = weekdays.indexOf(dateString.split(", ")[0]);
     document.getElementById("monthDisplay").innerText = dt.toLocaleDateString("en-GB", {month: "long"})+ " " + year;
 
+    console.log(paddingDays)
+    
 calendar.innerHTML = "";
 
-    for(let i = 1; i <= paddingDays + daysInMonth; i++) {
+
+    for( let i = 1 ; i <= paddingDays + daysInMonth; i++) {
         const daySquare = document.createElement("div");
         daySquare.classList.add("day");
 
@@ -59,6 +66,7 @@ calendar.innerHTML = "";
             daySquare.innerText = i - paddingDays;
 
             const eventForDay = events.find(e => e.date === dayString)
+
 
             if (eventForDay) {
                 const eventDiv = document.createElement("div")
