@@ -39,7 +39,7 @@ button{
   padding: 10px;
 }
 #calendar {
-  width: 100%;
+  width: 100;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -122,4 +122,16 @@ button{
   height: 100vh;
   position: absolute;
   background-color: rgba(0,0,0,0.8);
+}
+
+/* @media (min-width: 300px) {
+  #calendar, #container {
+    width: 50%;
+  }
+} */
+
+@media (min-width: 1200px) {
+  #container {
+    width: 770px;
+  }
 }

@@ -73,7 +73,6 @@ calendar.innerHTML = "";
         }
         calendar.appendChild(daySquare);
     }
-    console.log(paddingDays)
 }
 
 function closeModal() {
