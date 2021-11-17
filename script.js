@@ -4,10 +4,13 @@ let events = localStorage.getItem("events") ? JSON.parse(localStorage.getItem("e
 
 const calendar = document.getElementById("calendar")
 const newEventModal = document.getElementById("newEventModal")
+const newEventModalGlobal = document.getElementById("newEventModalGlobal")
 const deleteEventModal = document.getElementById("deleteEventModal")
 const backDrop = document.getElementById("modalBackDrop")
 const eventTitleInput = document.getElementById("eventTitleInput")
-const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
+const eventTitleInputGlobal = document.getElementById("eventTitleInputGlobal")
+let initialDate = document.getElementById("initialDate")
+const weekdays = ["Sunday", "Monday", "Tuesday", "Wenesday", "Thursday", "Friday", "Saturday" ];
 
 function openModal(date) {
     clicked = date;
@@ -22,6 +25,11 @@ function openModal(date) {
     }
 
     backDrop.style.display = "block"
+}
+
+function OpenModalGlobal() {
+    backDrop.style.display = "block"
+    newEventModalGlobal.style.display = "block"
 }
 
 function load() {
@@ -89,6 +97,7 @@ function closeModal() {
     eventTitleInput.classList.remove("error")
     newEventModal.style.display = "none";
     deleteEventModal.style.display = "none";
+    newEventModalGlobal.style.display = "none";
     backDrop.style.display = "none";
     eventTitleInput.value = "";
     clicked = null;
@@ -111,6 +120,12 @@ function saveEvent() {
     }
 }
 
+function saveEventGlobal() {
+    if (eventTitleInput.value) {
+        eventTitleInput.classList.remove("error")
+}}
+
+
 function deleteEvent() {
     events = events.filter(e => e.date !== clicked)
     localStorage.setItem("events", JSON.stringify(events))
@@ -129,10 +144,14 @@ document.getElementById("backButton").addEventListener("click", () => {
     });
 
     document.getElementById("saveButton").addEventListener("click", saveEvent)
+    document.getElementById("saveButton2").addEventListener("click", saveEventGlobal)
     document.getElementById("cancelButton").addEventListener("click", closeModal)
+    document.getElementById("cancelButton2").addEventListener("click", closeModal)
 
     document.getElementById("deleteButton").addEventListener("click", deleteEvent)
     document.getElementById("closeButton").addEventListener("click", closeModal)
+
+    document.getElementById("eventGlobal").addEventListener("click", OpenModalGlobal)
 }
 
 initButtons();

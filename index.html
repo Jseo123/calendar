@@ -11,8 +11,7 @@
 <div id="container">
     <div id="header">
         <div id="monthDisplay"></div>
-        <div>
-            <button id="addEvent"> Add Event</button>
+        <div><button id="eventGlobal">Add Event</button>
             <button id="backButton">Back</button>
             <button id="nextButton">Next</button></div>
         </div>
@@ -32,7 +31,7 @@
 <div id="newEventModal">
     <h2>New Event</h2>
 
-    <input id="eventTitleInput" placeholder="Event Title">
+    <input id="eventTitleInput" placeholder="Event Title" maxlength="60">
 
     <button id="saveButton">Save</button>
     <button id="cancelButton">Cancel</button>
@@ -44,6 +43,18 @@
     <p id="eventText"></p>
     <button id="deleteButton">Delete</button>
     <button id="closeButton">Close</button>
+</div>
+
+<div id="newEventModalGlobal">
+    <h2>New Event</h2>
+
+    <input id="eventTitleInputGlobal" placeholder="Event Title" maxlength="60">
+
+    <label for="initialDate">Initial date: </label>
+    <input type="date" id="initialDate" name="initialDate">
+
+    <button id="saveButton2">Save</button>
+    <button id="cancelButton2">Cancel</button>
 </div>
 
 <div id="modalBackDrop">
