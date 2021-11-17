@@ -124,20 +124,28 @@ function saveEvent() {
 
 function saveEventGlobal() {
     let inputDate = initialDate.value;
-    console.log(inputDate)
+    let r = inputDate.split("-")
+    console.log(r)
+
+    let x = r.reverse();
+
+ let dateFormat = r[0] + "/" + r[1] + "/" + r[2];
+
+ console.log(dateFormat)
 
 
 
-    if (eventTitleInput.value) {
+
+    if (dateFormat) {
         eventTitleInput.classList.remove("error")
         events.push({
-            date: inputDate,
-            title: eventTitleInput.value
+            date: dateFormat,
+            title: eventTitleInputGlobal.value
 })
 localStorage.setItem("events", JSON.stringify(events))
         closeModal()
     }else {
-        eventTitleInput.classList.add("error")
+        eventTitleInputGlobal.classList.add("error")
     }
 }
 
