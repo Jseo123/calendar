@@ -72,6 +72,8 @@ calendar.innerHTML = "";
 
         const dayString = `${i - paddingDays}/${month + 1}/${year}`;
 
+        
+
         if (i > paddingDays) {
             daySquare.innerText = i - paddingDays;
 
@@ -121,9 +123,23 @@ function saveEvent() {
 }
 
 function saveEventGlobal() {
+    let inputDate = initialDate.value;
+    console.log(inputDate)
+
+
+
     if (eventTitleInput.value) {
         eventTitleInput.classList.remove("error")
-}}
+        events.push({
+            date: inputDate,
+            title: eventTitleInput.value
+})
+localStorage.setItem("events", JSON.stringify(events))
+        closeModal()
+    }else {
+        eventTitleInput.classList.add("error")
+    }
+}
 
 
 function deleteEvent() {
@@ -157,3 +173,4 @@ document.getElementById("backButton").addEventListener("click", () => {
 initButtons();
 
 load();
+
