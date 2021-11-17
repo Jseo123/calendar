@@ -38,6 +38,8 @@ function load() {
         dt.setMonth(new Date().getMonth() + nav);
     }
 
+  console.log(Date)
+
     const day = dt.getDate();
     const month = dt.getMonth();
     const year = dt.getFullYear();
@@ -52,21 +54,29 @@ function load() {
         day: "numeric"
     });
 
+    let weekdayStrings = firstDayOfNMonth.toLocaleDateString("en-GB", {
+        weekday: "long"
+    });
+
     const paddingDays = weekdays.indexOf(dateString.split(", ")[0]);
     document.getElementById("monthDisplay").innerText = dt.toLocaleDateString("en-GB", {month: "long"})+ " " + year;
 
+    console.log(paddingDays)
+    
 calendar.innerHTML = "";
 
-    for(let i = 1; i <= paddingDays + daysInMonth; i++) {
+
+    for( let i = 1 ; i <= paddingDays + daysInMonth; i++) {
         const daySquare = document.createElement("div");
         daySquare.classList.add("day");
 
-        const dayString = `${month + 1}/${i - paddingDays}/${year}`;
+        const dayString = `${i - paddingDays}/${month + 1}/${year}`;
 
         if (i > paddingDays) {
             daySquare.innerText = i - paddingDays;
 
             const eventForDay = events.find(e => e.date === dayString)
+
 
             if (eventForDay) {
                 const eventDiv = document.createElement("div")
@@ -81,7 +91,6 @@ calendar.innerHTML = "";
         }
         calendar.appendChild(daySquare);
     }
-    console.log(paddingDays)
 }
 
 function closeModal() {
