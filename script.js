@@ -131,13 +131,12 @@ function saveEventGlobal() {
 
  let dateFormat = r[0] + "/" + r[1] + "/" + r[2];
 
- console.log(dateFormat)
-
+let f = new Date (dateFormat)
 
 
 
     if (dateFormat) {
-        eventTitleInput.classList.remove("error")
+        eventTitleInputGlobal.classList.remove("error")
         events.push({
             date: dateFormat,
             title: eventTitleInputGlobal.value
