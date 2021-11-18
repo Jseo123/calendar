@@ -99,6 +99,8 @@ daySquare.id = "currentDay";
     }
 }
 
+
+
 function closeModal() {
     eventTitleInput.classList.remove("error")
     newEventModal.style.display = "none";
@@ -109,6 +111,11 @@ function closeModal() {
     clicked = null;
     load();
 }
+
+document.addEventListener('keydown', function(esc){
+	if(esc.key === "Escape"){
+        closeModal()
+    }})
 
 function saveEvent() {
     if (eventTitleInput.value) {
