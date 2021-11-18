@@ -129,7 +129,7 @@ function saveEvent() {
 function saveEventGlobal() {
     let inputDate = initialDate.value;
     let r = inputDate.split("-")
-    console.log(r)
+    console.log(inputDate)
 
     let x = r.reverse();
 
