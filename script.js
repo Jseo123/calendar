@@ -135,120 +135,30 @@ function saveEvent() {
 
 function saveEventGlobal() {
     let inputDate = initialDate.value;
-    let r = inputDate.split("-")
-    console.log(inputDate)
 
-    let x = r.reverse();
+ let x = new Date(inputDate)
 
-if (r[0] < 10)  {
-let digit = (""+r[0])[1];
-
-
- let dateFormat = digit + "/" + r[1] + "/" + r[2];
+ let dateFormat = x.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric"
+ })
  
  if (dateFormat) {
     eventTitleInputGlobal.classList.remove("error")
+
     events.push({
         date: dateFormat,
         title: eventTitleInputGlobal.value
-})
-localStorage.setItem("events", JSON.stringify(events))
+    })
+
+    localStorage.setItem("events", JSON.stringify(events))
     closeModal()
 }else {
     eventTitleInputGlobal.classList.add("error")
 }
-}
-
-else {
-    let dateFormat =  r[0] + "/" + r[1] + "/" + r[2];
-
-    if (dateFormat) {
-        eventTitleInputGlobal.classList.remove("error")
-        events.push({
-            date: dateFormat,
-            title: eventTitleInputGlobal.value
-})
-localStorage.setItem("events", JSON.stringify(events))
-        closeModal()
-    }else {
-        eventTitleInputGlobal.classList.add("error")
-    }
-}
 
 
-
-if (r[1] < 10)  {
-    let digit = (""+r[1])[1];
-    
-    
-     let dateFormat = r[0] + "/" + digit + "/" + r[2];
-     
-     if (dateFormat) {
-        eventTitleInputGlobal.classList.remove("error")
-        events.push({
-            date: dateFormat,
-            title: eventTitleInputGlobal.value
-    })
-    localStorage.setItem("events", JSON.stringify(events))
-        closeModal()
-    }else {
-        eventTitleInputGlobal.classList.add("error")
-    }
-    }
-    
-    else {
-        let dateFormat =  r[0] + "/" + r[1] + "/" + r[2];
-    
-        if (dateFormat) {
-            eventTitleInputGlobal.classList.remove("error")
-            events.push({
-                date: dateFormat,
-                title: eventTitleInputGlobal.value
-    })
-    localStorage.setItem("events", JSON.stringify(events))
-            closeModal()
-        }else {
-            eventTitleInputGlobal.classList.add("error")
-        }
-    }
-
-
-    if (r[1] && r[0] < 10)  {
-        let digit = (""+r[1])[1];
-        let m = (""+r[0])[1];
-    
-        
-         let dateFormat = m + "/" + digit + "/" + r[2];
-         
-         if (dateFormat) {
-            eventTitleInputGlobal.classList.remove("error")
-            events.push({
-                date: dateFormat,
-                title: eventTitleInputGlobal.value
-        })
-        localStorage.setItem("events", JSON.stringify(events))
-            closeModal()
-        }else {
-            eventTitleInputGlobal.classList.add("error")
-        }
-        }
-        
-        else {
-            let dateFormat =  r[0] + "/" + r[1] + "/" + r[2];
-        
-            if (dateFormat) {
-                eventTitleInputGlobal.classList.remove("error")
-                events.push({
-                    date: dateFormat,
-                    title: eventTitleInputGlobal.value
-        })
-        localStorage.setItem("events", JSON.stringify(events))
-                closeModal()
-            }else {
-                eventTitleInputGlobal.classList.add("error")
-            }
-        }
- 
 }
 
 
@@ -284,3 +194,4 @@ initButtons();
 
 load();
 
+console.log(events)
