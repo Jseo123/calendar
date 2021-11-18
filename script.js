@@ -10,7 +10,7 @@ const backDrop = document.getElementById("modalBackDrop")
 const eventTitleInput = document.getElementById("eventTitleInput")
 const eventTitleInputGlobal = document.getElementById("eventTitleInputGlobal")
 let initialDate = document.getElementById("initialDate")
-const weekdays = ["Sunday", "Monday", "Tuesday", "Wenesday", "Thursday", "Friday", "Saturday" ];
+const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
 
 function openModal(date) {
     clicked = date;
@@ -129,11 +129,27 @@ function saveEventGlobal() {
 
     let x = r.reverse();
 
- let dateFormat = r[0] + "/" + r[1] + "/" + r[2];
+if (r[0] < 10)  {
+let digit = (""+r[0])[1];
 
-let f = new Date (dateFormat)
 
+ let dateFormat = digit + "/" + r[1] + "/" + r[2];
+ 
+ if (dateFormat) {
+    eventTitleInputGlobal.classList.remove("error")
+    events.push({
+        date: dateFormat,
+        title: eventTitleInputGlobal.value
+})
+localStorage.setItem("events", JSON.stringify(events))
+    closeModal()
+}else {
+    eventTitleInputGlobal.classList.add("error")
+}
+}
 
+else {
+    let dateFormat =  r[0] + "/" + r[1] + "/" + r[2];
 
     if (dateFormat) {
         eventTitleInputGlobal.classList.remove("error")
@@ -146,6 +162,82 @@ localStorage.setItem("events", JSON.stringify(events))
     }else {
         eventTitleInputGlobal.classList.add("error")
     }
+}
+
+
+
+if (r[1] < 10)  {
+    let digit = (""+r[1])[1];
+    
+    
+     let dateFormat = r[0] + "/" + digit + "/" + r[2];
+     
+     if (dateFormat) {
+        eventTitleInputGlobal.classList.remove("error")
+        events.push({
+            date: dateFormat,
+            title: eventTitleInputGlobal.value
+    })
+    localStorage.setItem("events", JSON.stringify(events))
+        closeModal()
+    }else {
+        eventTitleInputGlobal.classList.add("error")
+    }
+    }
+    
+    else {
+        let dateFormat =  r[0] + "/" + r[1] + "/" + r[2];
+    
+        if (dateFormat) {
+            eventTitleInputGlobal.classList.remove("error")
+            events.push({
+                date: dateFormat,
+                title: eventTitleInputGlobal.value
+    })
+    localStorage.setItem("events", JSON.stringify(events))
+            closeModal()
+        }else {
+            eventTitleInputGlobal.classList.add("error")
+        }
+    }
+
+
+    if (r[1] && r[0] < 10)  {
+        let digit = (""+r[1])[1];
+        let m = (""+r[0])[1];
+    
+        
+         let dateFormat = m + "/" + digit + "/" + r[2];
+         
+         if (dateFormat) {
+            eventTitleInputGlobal.classList.remove("error")
+            events.push({
+                date: dateFormat,
+                title: eventTitleInputGlobal.value
+        })
+        localStorage.setItem("events", JSON.stringify(events))
+            closeModal()
+        }else {
+            eventTitleInputGlobal.classList.add("error")
+        }
+        }
+        
+        else {
+            let dateFormat =  r[0] + "/" + r[1] + "/" + r[2];
+        
+            if (dateFormat) {
+                eventTitleInputGlobal.classList.remove("error")
+                events.push({
+                    date: dateFormat,
+                    title: eventTitleInputGlobal.value
+        })
+        localStorage.setItem("events", JSON.stringify(events))
+                closeModal()
+            }else {
+                eventTitleInputGlobal.classList.add("error")
+            }
+        }
+ 
 }
 
 
