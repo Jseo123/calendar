@@ -148,8 +148,9 @@ function saveEventGlobal() {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
-        date: dateFormat,
+        date: dateFormat, 
         title: eventTitleInputGlobal.value
+    
     })
 
     localStorage.setItem("events", JSON.stringify(events))
