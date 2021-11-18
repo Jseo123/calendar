@@ -8,6 +8,7 @@ const deleteEventModal = document.getElementById("deleteEventModal")
 const backDrop = document.getElementById("modalBackDrop")
 const eventTitleInput = document.getElementById("eventTitleInput")
 const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
+ let yearGlobal = 0;
 
 function openModal(date) {
     clicked = date;
@@ -23,14 +24,34 @@ function openModal(date) {
 
     backDrop.style.display = "block"
 }
+function changeYear(number){
+    nav = 0;
+    nav = nav + (12*number);
+    load();
+}
+
+function showYear(){
+    var table = document.getElementById("tableyear");
+    var counter = -12;
+    for(var i in table.rows)
+    {
+        var row = table.rows[i];
+        for(var j in row.cells)
+        {
+            if(isNaN(j))break;
+            var col = row.cells[j];
+            var actualYear = yearGlobal+counter;
+            col.innerHTML="<button class='buttonYear' value='"+counter+"' onclick='changeYear(value)'>"+actualYear+"</button>";
+            counter=counter+1;
+        }
+    }
+}
 
 function load() {
     const dt = new Date();
     if(nav !==0) {
         dt.setMonth(new Date().getMonth() + nav);
     }
-
-  console.log(Date)
 
     const day = dt.getDate();
     const month = dt.getMonth();
@@ -51,11 +72,14 @@ function load() {
     });
 
     const paddingDays = weekdays.indexOf(dateString.split(", ")[0]);
-    document.getElementById("monthDisplay").innerText = dt.toLocaleDateString("en-GB", {month: "long"})+ " " + year;
+    document.getElementById("monthDisplay").innerText = dt.toLocaleDateString("en-GB", {month: "long"});
 
-    console.log(paddingDays)
-    
-calendar.innerHTML = "";
+    var yearDiv = document.getElementById("btnYear");
+    yearDiv.innerText = year;
+    yearGlobal = year;
+    yearDiv.addEventListener("click", showYear);
+
+    calendar.innerHTML = "";
 
 
     for( let i = 1 ; i <= paddingDays + daysInMonth; i++) {

@@ -80,6 +80,7 @@ button{
   background-color: #FFFCFF !important;
   box-shadow: none !important;
 }
+
 #newEventModal, #deleteEventModal {
   display: none;
   z-index: 20;
@@ -126,14 +127,24 @@ button{
   background-color: rgba(0,0,0,0.8);
 }
 
-/* @media (min-width: 300px) {
-  #calendar, #container {
-    width: 50%;
+.buttonYear{
+  color:red;
+}
+/* @media screen and (max-width: 600px) {
+  #container {
+    width: 5%;
   }
 } */
 
-@media (min-width: 1200px) {
+
+/* @media (max-width: 300px) {
   #container {
-    width: 770px;
+    width: 10%;
+  }
+} */
+
+@media screen and (max-width: 800px) {
+  #container {
+    width: 770%;
   }
 }
