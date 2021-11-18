@@ -4,9 +4,12 @@ let events = localStorage.getItem("events") ? JSON.parse(localStorage.getItem("e
 
 const calendar = document.getElementById("calendar")
 const newEventModal = document.getElementById("newEventModal")
+const newEventModalGlobal = document.getElementById("newEventModalGlobal")
 const deleteEventModal = document.getElementById("deleteEventModal")
 const backDrop = document.getElementById("modalBackDrop")
 const eventTitleInput = document.getElementById("eventTitleInput")
+const eventTitleInputGlobal = document.getElementById("eventTitleInputGlobal")
+let initialDate = document.getElementById("initialDate")
 const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
  let yearGlobal = 0;
 
@@ -45,6 +48,11 @@ function showYear(){
             counter=counter+1;
         }
     }
+}
+
+function OpenModalGlobal() {
+    backDrop.style.display = "block"
+    newEventModalGlobal.style.display = "block"
 }
 
 function load() {
@@ -88,10 +96,16 @@ function load() {
 
         const dayString = `${i - paddingDays}/${month + 1}/${year}`;
 
+        
+
         if (i > paddingDays) {
             daySquare.innerText = i - paddingDays;
 
             const eventForDay = events.find(e => e.date === dayString)
+
+            if(i - paddingDays === day && nav === 0){
+daySquare.id = "currentDay";
+            }
 
 
             if (eventForDay) {
@@ -113,6 +127,7 @@ function closeModal() {
     eventTitleInput.classList.remove("error")
     newEventModal.style.display = "none";
     deleteEventModal.style.display = "none";
+    newEventModalGlobal.style.display = "none";
     backDrop.style.display = "none";
     eventTitleInput.value = "";
     clicked = null;
@@ -135,6 +150,125 @@ function saveEvent() {
     }
 }
 
+function saveEventGlobal() {
+    let inputDate = initialDate.value;
+    let r = inputDate.split("-")
+    console.log(r)
+
+    let x = r.reverse();
+
+if (r[0] < 10)  {
+let digit = (""+r[0])[1];
+
+
+ let dateFormat = digit + "/" + r[1] + "/" + r[2];
+ 
+ if (dateFormat) {
+    eventTitleInputGlobal.classList.remove("error")
+    events.push({
+        date: dateFormat,
+        title: eventTitleInputGlobal.value
+})
+localStorage.setItem("events", JSON.stringify(events))
+    closeModal()
+}else {
+    eventTitleInputGlobal.classList.add("error")
+}
+}
+
+else {
+    let dateFormat =  r[0] + "/" + r[1] + "/" + r[2];
+
+    if (dateFormat) {
+        eventTitleInputGlobal.classList.remove("error")
+        events.push({
+            date: dateFormat,
+            title: eventTitleInputGlobal.value
+})
+localStorage.setItem("events", JSON.stringify(events))
+        closeModal()
+    }else {
+        eventTitleInputGlobal.classList.add("error")
+    }
+}
+
+
+
+if (r[1] < 10)  {
+    let digit = (""+r[1])[1];
+    
+    
+     let dateFormat = r[0] + "/" + digit + "/" + r[2];
+     
+     if (dateFormat) {
+        eventTitleInputGlobal.classList.remove("error")
+        events.push({
+            date: dateFormat,
+            title: eventTitleInputGlobal.value
+    })
+    localStorage.setItem("events", JSON.stringify(events))
+        closeModal()
+    }else {
+        eventTitleInputGlobal.classList.add("error")
+    }
+    }
+    
+    else {
+        let dateFormat =  r[0] + "/" + r[1] + "/" + r[2];
+    
+        if (dateFormat) {
+            eventTitleInputGlobal.classList.remove("error")
+            events.push({
+                date: dateFormat,
+                title: eventTitleInputGlobal.value
+    })
+    localStorage.setItem("events", JSON.stringify(events))
+            closeModal()
+        }else {
+            eventTitleInputGlobal.classList.add("error")
+        }
+    }
+
+
+    if (r[1] && r[0] < 10)  {
+        let digit = (""+r[1])[1];
+        let m = (""+r[0])[1];
+    
+        
+         let dateFormat = m + "/" + digit + "/" + r[2];
+         
+         if (dateFormat) {
+            eventTitleInputGlobal.classList.remove("error")
+            events.push({
+                date: dateFormat,
+                title: eventTitleInputGlobal.value
+        })
+        localStorage.setItem("events", JSON.stringify(events))
+            closeModal()
+        }else {
+            eventTitleInputGlobal.classList.add("error")
+        }
+        }
+        
+        else {
+            let dateFormat =  r[0] + "/" + r[1] + "/" + r[2];
+        
+            if (dateFormat) {
+                eventTitleInputGlobal.classList.remove("error")
+                events.push({
+                    date: dateFormat,
+                    title: eventTitleInputGlobal.value
+        })
+        localStorage.setItem("events", JSON.stringify(events))
+                closeModal()
+            }else {
+                eventTitleInputGlobal.classList.add("error")
+            }
+        }
+ 
+}
+
+
 function deleteEvent() {
     events = events.filter(e => e.date !== clicked)
     localStorage.setItem("events", JSON.stringify(events))
@@ -153,12 +287,17 @@ document.getElementById("backButton").addEventListener("click", () => {
     });
 
     document.getElementById("saveButton").addEventListener("click", saveEvent)
+    document.getElementById("saveButton2").addEventListener("click", saveEventGlobal)
     document.getElementById("cancelButton").addEventListener("click", closeModal)
+    document.getElementById("cancelButton2").addEventListener("click", closeModal)
 
     document.getElementById("deleteButton").addEventListener("click", deleteEvent)
     document.getElementById("closeButton").addEventListener("click", closeModal)
+
+    document.getElementById("eventGlobal").addEventListener("click", OpenModalGlobal)
 }
 
 initButtons();
 
 load();
+
