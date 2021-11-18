@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
-        <script src="script.js" defer></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <script src="yearModal.js" defer></script>
-        <title>Calendar</title>
-    </head>
-    
-    <body>
-        <div id="container">
-            <div id="header">
-                <div id="monthDisplay"></div>
-                <!-- Button Year to Modal -->
-                <button type="button" id="btnYear" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div id="yearDisplay">
-                </div>
-                  </button>
 
-                <div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Calendar</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="monthDisplay"></div>
+            <!-- Button Year to Modal -->
+            <button type="button" id="btnYear" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                <div id="yearDisplay">
+                </div>
+            </button>
+
+            <div>
                 <button id="backButton">Back</button>
                 <button id="nextButton">Next</button>
             </div>
@@ -54,61 +55,62 @@
     </div>
     <div id="modalBackDrop">
     </div>
-  
-  <!-- Modal Year -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+
+    <!-- Modal Year -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-  </div>
-  <table id="tableyear">
-      <tr id="row1year">
-          <td id="col11"></td>
-          <td id="col21"></td>
-          <td id="col31"></td>
-          <td id="col41"></td>
-          <td id="col51"></td>
-      </tr>
-      <tr id="row2year">
-          <td id="col12"></td>
-          <td id="col22"></td>
-          <td id="col32"></td>
-          <td id="col42"></td>
-          <td id="col52"></td>
-      </tr>
-      <tr id="row3year">
-          <td id="col13"></td>
-          <td id="col23"></td>
-          <td id="col33"></td>
-          <td id="col43"></td>
-          <td id="col53"></td>
-      </tr>
-      <tr id="row4year">
-          <td id="col14"></td>
-          <td id="col24"></td>
-          <td id="col34"></td>
-          <td id="col44"></td>
-          <td id="col54"></td>
-      </tr>
-      <tr id="row5year">
-          <td id="col15"></td>
-          <td id="col25"></td>
-          <td id="col35"></td>
-          <td id="col45"></td>
-          <td id="col55"></td>
-      </tr>
-  </table>
-  
+    <table id="tableyear">
+        <tr id="row1year">
+            <td id="col11"></td>
+            <td id="col21"></td>
+            <td id="col31"></td>
+            <td id="col41"></td>
+            <td id="col51"></td>
+        </tr>
+        <tr id="row2year">
+            <td id="col12"></td>
+            <td id="col22"></td>
+            <td id="col32"></td>
+            <td id="col42"></td>
+            <td id="col52"></td>
+        </tr>
+        <tr id="row3year">
+            <td id="col13"></td>
+            <td id="col23"></td>
+            <td id="col33"></td>
+            <td id="col43"></td>
+            <td id="col53"></td>
+        </tr>
+        <tr id="row4year">
+            <td id="col14"></td>
+            <td id="col24"></td>
+            <td id="col34"></td>
+            <td id="col44"></td>
+            <td id="col54"></td>
+        </tr>
+        <tr id="row5year">
+            <td id="col15"></td>
+            <td id="col25"></td>
+            <td id="col35"></td>
+            <td id="col45"></td>
+            <td id="col55"></td>
+        </tr>
+    </table>
+
 </body>
+
 </html>
