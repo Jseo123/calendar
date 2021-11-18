@@ -74,7 +74,7 @@ function load() {
     const paddingDays = weekdays.indexOf(dateString.split(", ")[0]);
     document.getElementById("monthDisplay").innerText = dt.toLocaleDateString("en-GB", {month: "long"});
 
-    var yearDiv = document.getElementById("btnYear");
+    var yearDiv = document.getElementById("yearDisplay");
     yearDiv.innerText = year;
     yearGlobal = year;
     yearDiv.addEventListener("click", showYear);
