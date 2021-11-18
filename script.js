@@ -179,7 +179,10 @@ function saveEventGlobal() {
  let dateFormat = x.toLocaleDateString("en-GB", {
     year: "numeric",
     month: "numeric",
-    day: "numeric"
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
  })
  
  if (dateFormat) {
