@@ -137,6 +137,8 @@ function load() {
     }
 }
 
+
+
 function closeModal() {
     eventTitleInput.classList.remove("error");
     newEventModal.style.display = "none";
@@ -147,6 +149,11 @@ function closeModal() {
     clicked = null;
     load();
 }
+
+document.addEventListener('keydown', function(esc){
+	if(esc.key === "Escape"){
+        closeModal()
+    }})
 
 function saveEvent() {
     if (eventTitleInput.value) {
@@ -166,107 +173,30 @@ function saveEvent() {
 
 function saveEventGlobal() {
     let inputDate = initialDate.value;
-    let r = inputDate.split("-");
-    console.log(r);
 
-    let x = r.reverse();
+ let x = new Date(inputDate)
 
-    if (r[0] < 10) {
-        let digit = ("" + r[0])[1];
+ let dateFormat = x.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric"
+ })
+ 
+ if (dateFormat) {
+    eventTitleInputGlobal.classList.remove("error")
 
-        let dateFormat = digit + "/" + r[1] + "/" + r[2];
+    events.push({
+        date: dateFormat,
+        title: eventTitleInputGlobal.value
+    })
 
-        if (dateFormat) {
-            eventTitleInputGlobal.classList.remove("error");
-            events.push({
-                date: dateFormat,
-                title: eventTitleInputGlobal.value,
-            });
-            localStorage.setItem("events", JSON.stringify(events));
-            closeModal();
-        } else {
-            eventTitleInputGlobal.classList.add("error");
-        }
-    } else {
-        let dateFormat = r[0] + "/" + r[1] + "/" + r[2];
+    localStorage.setItem("events", JSON.stringify(events))
+    closeModal()
+}else {
+    eventTitleInputGlobal.classList.add("error")
+}
 
-        if (dateFormat) {
-            eventTitleInputGlobal.classList.remove("error");
-            events.push({
-                date: dateFormat,
-                title: eventTitleInputGlobal.value,
-            });
-            localStorage.setItem("events", JSON.stringify(events));
-            closeModal();
-        } else {
-            eventTitleInputGlobal.classList.add("error");
-        }
-    }
 
-    if (r[1] < 10) {
-        let digit = ("" + r[1])[1];
-
-        let dateFormat = r[0] + "/" + digit + "/" + r[2];
-
-        if (dateFormat) {
-            eventTitleInputGlobal.classList.remove("error");
-            events.push({
-                date: dateFormat,
-                title: eventTitleInputGlobal.value,
-            });
-            localStorage.setItem("events", JSON.stringify(events));
-            closeModal();
-        } else {
-            eventTitleInputGlobal.classList.add("error");
-        }
-    } else {
-        let dateFormat = r[0] + "/" + r[1] + "/" + r[2];
-
-        if (dateFormat) {
-            eventTitleInputGlobal.classList.remove("error");
-            events.push({
-                date: dateFormat,
-                title: eventTitleInputGlobal.value,
-            });
-            localStorage.setItem("events", JSON.stringify(events));
-            closeModal();
-        } else {
-            eventTitleInputGlobal.classList.add("error");
-        }
-    }
-
-    if (r[1] && r[0] < 10) {
-        let digit = ("" + r[1])[1];
-        let m = ("" + r[0])[1];
-
-        let dateFormat = m + "/" + digit + "/" + r[2];
-
-        if (dateFormat) {
-            eventTitleInputGlobal.classList.remove("error");
-            events.push({
-                date: dateFormat,
-                title: eventTitleInputGlobal.value,
-            });
-            localStorage.setItem("events", JSON.stringify(events));
-            closeModal();
-        } else {
-            eventTitleInputGlobal.classList.add("error");
-        }
-    } else {
-        let dateFormat = r[0] + "/" + r[1] + "/" + r[2];
-
-        if (dateFormat) {
-            eventTitleInputGlobal.classList.remove("error");
-            events.push({
-                date: dateFormat,
-                title: eventTitleInputGlobal.value,
-            });
-            localStorage.setItem("events", JSON.stringify(events));
-            closeModal();
-        } else {
-            eventTitleInputGlobal.classList.add("error");
-        }
-    }
 }
 
 function deleteEvent() {
@@ -308,3 +238,5 @@ function initButtons() {
 initButtons();
 
 load();
+
+console.log(events)
