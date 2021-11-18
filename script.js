@@ -11,7 +11,7 @@ const deleteEventModal = document.getElementById("deleteEventModal");
 const backDrop = document.getElementById("modalBackDrop");
 const eventTitleInput = document.getElementById("eventTitleInput");
 const eventTitleInputGlobal = document.getElementById("eventTitleInputGlobal");
-let initialDate = document.getElementById("initialDate");
+let initialDate = document.getElementById("initialDateGlobal");
 const weekdays = [
     "Sunday",
     "Monday",
@@ -172,7 +172,7 @@ function saveEvent() {
 }
 
 function saveEventGlobal() {
-    let inputDate = initialDate.value;
+    let inputDate = initialDateGlobal.value;
 
  let x = new Date(inputDate)
 
