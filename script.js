@@ -11,7 +11,7 @@ const deleteEventModal = document.getElementById("deleteEventModal");
 const backDrop = document.getElementById("modalBackDrop");
 const eventTitleInput = document.getElementById("eventTitleInput");
 const eventTitleInputGlobal = document.getElementById("eventTitleInputGlobal");
-let initialDate = document.getElementById("initialDate");
+let initialDate = document.getElementById("initialDateGlobal");
 const weekdays = [
     "Sunday",
     "Monday",
@@ -175,22 +175,26 @@ function endDateDisplay() {
 }
 
 function saveEventGlobal() {
-    let inputDate = initialDate.value;
+    let inputDate = initialDateGlobal.value;
 
  let x = new Date(inputDate)
 
  let dateFormat = x.toLocaleDateString("en-GB", {
     year: "numeric",
     month: "numeric",
-    day: "numeric"
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
  })
  
  if (dateFormat) {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
-        date: dateFormat,
+        date: dateFormat, 
         title: eventTitleInputGlobal.value
+    
     })
 
     localStorage.setItem("events", JSON.stringify(events))
