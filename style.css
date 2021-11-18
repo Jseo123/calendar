@@ -28,6 +28,9 @@ button{
 #header button{
   background-color: #7882a5;
 }
+.btn btn-primary{
+  background-color:darkmagenta !important;
+}
 #container{
   display: flex;
   flex-direction: column;
