@@ -29,8 +29,12 @@ button{
   background-color: #7882a5;
 }
 #container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   width: 770px;
 }
+
 #weekdays{
   width: 100%;
   display: flex;
@@ -125,15 +129,37 @@ button{
   position: absolute;
   background-color: rgba(0,0,0,0.8);
 }
+.modal-body, .modal-footer{
+  color: black;
+  background-color:rgb(207, 202, 202);
+  text-align: center;
+}
+.buttonYear{
+text-align: center;
+text-decoration: none;
+box-shadow: #7882a5;
+padding: 20%;
+text-transform: none;
+color:rgb(1, 1, 12);
+cursor:pointer;
+}
 
-/* @media (min-width: 300px) {
-  #calendar, #container {
-    width: 50%;
+
+/* @media screen and (max-width: 600px) {
+  #container {
+    width: 5%;
   }
 } */
 
-@media (min-width: 1200px) {
+
+/* @media (max-width: 300px) {
   #container {
-    width: 770px;
+    width: 10%;
+  }
+} */
+
+@media screen and (max-width: 800px) {
+  #container {
+    width: 770%;
   }
 }
