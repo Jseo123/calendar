@@ -78,7 +78,9 @@ function load() {
     const day = dt.getDate();
     const month = dt.getMonth();
     const year = dt.getFullYear();
-
+    const hour = dt.getHours();
+    const minutes = dt.getMinutes();
+ 
     const firstDayOfNMonth = new Date(year, month, 1);
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
@@ -180,17 +182,21 @@ function saveEventGlobal() {
     year: "numeric",
     month: "numeric",
     day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false
  })
  
+ r = dateFormat.split(", ")
+ console.log(r)
+
  if (dateFormat) {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
-        date: dateFormat, 
-        title: eventTitleInputGlobal.value
+        date: r[0], 
+        title: eventTitleInputGlobal.value,
+        hour: r[1]
     
     })
 
