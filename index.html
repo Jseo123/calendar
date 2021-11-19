@@ -47,9 +47,9 @@
         <input id="eventTitleInput" placeholder="Event Title" maxlength="60">
         <label for="initialDate">Initial date: </label>
         <input type="datetime-local" id="initialDate" name="initialDate"><br>
-        <input type="checkbox" name="timeEndCheck" id="timeEndCheck">
-        <label for="timeInitial">End date</label><br>
-        <input type="datetime-local" id="EndDate" name="EndDate"><br>
+        <input type="checkbox" name="timeEndCheck" id="timeEndCheck" onclick="endDateDisplay()">
+        <label for="timeInitial">End date</label>   
+        <input type="datetime-local" id="endDate" name="endDate"><br>
         <input type="checkbox">
         <label for="timeEndCheck">Remind me when this event expires</label><br>
         <label for="timeAdvise">Time: </label>
@@ -138,14 +138,14 @@
         <input id="eventTitleInputGlobal" placeholder="Event Title" maxlength="60">
 
     <label for="initialDate">Initial date: </label>
-    <input type="datetime-local" id="initialDate" name="initialDate"><br>
-    <input type="checkbox" name="timeEndCheck" id="timeEndCheck">
-    <label for="timeInitial">End date</label><br>
-    <input type="datetime-local" id="EndDate" name="EndDate"><br>
+    <input type="datetime-local" id="initialDateGlobal" name="initialDatetGlobal"><br>
+    <input type="checkbox" name="timeEndChecktGlobal" id="timeEndChecktGlobal">
+    <label for="timeInitialtGlobal">End date</label><br>
+    <input type="datetime-local" id="EndDateGlobal" name="EndDatetGlobal"><br>
     <input type="checkbox">
-    <label for="timeEndCheck">Remind me when this event expires</label><br>
-    <label for="timeAdvise">Time: </label>
-    <select name="timeAdvise" id="timeAdvise">
+    <label for="timeEndChecktGlobal">Remind me when this event expires</label><br>
+    <label for="timeAdvisetGlobal">Time: </label>
+    <select name="timeAdvisetGlobal" id="timeAdviseGlobal">
         <option value="5">5 minutes</option>
         <option value="10">10 minutes</option>
         <option value="30">30 minutes</option>
@@ -153,10 +153,10 @@
         <option value="2">2 hours</option>
         <option value="5">5 hours</option>
     </select><br>
-    <label for="description">Description</label>
-    <input type="text" name="description" id="description"><br>
-    <label for="eventType">Event type: </label>
-    <select name="eventType" id="eventType">
+    <label for="descriptiontGlobal">Description</label>
+    <input type="text" name="descriptiontGlobal" id="descriptiontGlobal"><br>
+    <label for="eventTypetGlobal">Event type: </label>
+    <select name="eventTypetGlobal" id="eventTypeGlobal">
         <option value="meeting">Meeting</option>
         <option value="personal">Personal</option>
         <option value="study">Study</option>

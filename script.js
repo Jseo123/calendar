@@ -11,7 +11,7 @@ const deleteEventModal = document.getElementById("deleteEventModal");
 const backDrop = document.getElementById("modalBackDrop");
 const eventTitleInput = document.getElementById("eventTitleInput");
 const eventTitleInputGlobal = document.getElementById("eventTitleInputGlobal");
-let initialDate = document.getElementById("initialDate");
+let initialDate = document.getElementById("initialDateGlobal");
 const weekdays = [
     "Sunday",
     "Monday",
@@ -25,7 +25,6 @@ let yearGlobal = 0;
 
 function openModal(date) {
     clicked = date;
-
     const eventForDay = events.find((e) => e.date === clicked);
 
     if (eventForDay) {
@@ -78,7 +77,9 @@ function load() {
     const day = dt.getDate();
     const month = dt.getMonth();
     const year = dt.getFullYear();
-
+    const hour = dt.getHours();
+    const minutes = dt.getMinutes();
+ 
     const firstDayOfNMonth = new Date(year, month, 1);
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
@@ -171,23 +172,35 @@ function saveEvent() {
     }
 }
 
+function endDateDisplay() {
+        document.getElementById("endDate").classList.toggle("displayBlock")
+}
+
 function saveEventGlobal() {
-    let inputDate = initialDate.value;
+    let inputDate = initialDateGlobal.value;
 
  let x = new Date(inputDate)
 
  let dateFormat = x.toLocaleDateString("en-GB", {
     year: "numeric",
     month: "numeric",
-    day: "numeric"
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false
  })
  
+ r = dateFormat.split(", ")
+ console.log(r)
+
  if (dateFormat) {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
-        date: dateFormat,
-        title: eventTitleInputGlobal.value
+        date: r[0], 
+        title: eventTitleInputGlobal.value,
+        hour: r[1]
+    
     })
 
     localStorage.setItem("events", JSON.stringify(events))
