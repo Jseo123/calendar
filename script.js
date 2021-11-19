@@ -154,6 +154,7 @@ function closeModal() {
     backDrop.style.display = "none";
     eventTitleInput.value = "";
     clicked = null;
+    deleteInfoEvent()
     load();
 }
 
@@ -183,6 +184,13 @@ function endDateDisplay() {
 }
 function endDateDisplayGlobal() {
     document.getElementById("EndDateGlobal").classList.toggle("displayBlock")
+}
+
+function deleteInfoEvent() {
+    eventTitleInputGlobal.value = ""
+    initialDateGlobal.value = ""
+    endDateGlobal.value = ""
+    descriptiontGlobal.value = ""
 }
 
 
@@ -233,10 +241,7 @@ let r = dateFormat.split(", ")
     closeModal()
 }else {
     eventTitleInputGlobal.classList.add("error")
-}
-
-
-}
+}}
 
 function deleteEvent() {
     events = events.filter((e) => e.date !== clicked);
