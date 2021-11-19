@@ -16,7 +16,10 @@ let endDateGlobal = document.getElementById("EndDateGlobal")
 let descriptiontGlobal = document.getElementById("descriptiontGlobal")
 let eventTypeGlobal = document.getElementById("eventTypeGlobal")
 
-
+let initialDate = document.getElementById("initialDate")
+let endDate = document.getElementById("endDate")
+let eventType = document.getElementById("eventType")
+let description = document.getElementById("description")
 
 const weekdays = [
     "Sunday",
@@ -164,12 +167,32 @@ document.addEventListener('keydown', function(esc){
     }})
 
 function saveEvent() {
+    let finishDate = endDate.value
+
+ let b = new Date(finishDate)
+
+
+ let finishDateFormat = b.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false
+ })
+
     if (eventTitleInput.value) {
         eventTitleInput.classList.remove("error");
 
         events.push({
             date: clicked,
             title: eventTitleInput.value,
+            hour: initialDate.value,
+            eventEndDate: finishDateFormat,
+            eventDescription: description.value,
+            eventEventType: eventType.value
+            
+
         });
 
         localStorage.setItem("events", JSON.stringify(events));
@@ -196,11 +219,9 @@ function deleteInfoEvent() {
 
 function saveEventGlobal() {
     let inputDate = initialDateGlobal.value;
-    let endDate = endDateGlobal.value;
-    let description = descriptiontGlobal.value;
-    let eventType = eventTypeGlobal.value;
+    let endDates = endDateGlobal.value;
 
- let z = new Date(endDate)
+ let z = new Date(endDates)
  let x = new Date(inputDate)
 
  let endDateFormat = z.toLocaleDateString("en-GB", {
@@ -232,8 +253,8 @@ let r = dateFormat.split(", ")
         title: eventTitleInputGlobal.value,
         hour: r[1],
         eventEndDate: endDateFormat,
-        eventDescription: description,
-        eventEventType: eventType
+        eventDescription: descriptiontGlobal.value,
+        eventEventType: eventTypeGlobal.value
     
     })
 
