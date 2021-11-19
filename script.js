@@ -37,9 +37,26 @@ function openModal(date) {
     const eventForDay = events.find((e) => e.date === clicked);
 
     if (eventForDay) {
-        document.getElementById("eventText").innerText = eventForDay.title;
+    if (eventForDay.title) {
+        document.getElementById("titleText").innerText = eventForDay.title;
         deleteEventModal.style.display = "block";
-    } else {
+    }
+    if (eventForDay.date) {
+        document.getElementById("timeText1").innerText = "Event starts on " + eventForDay.date + ", " + eventForDay.hour
+    }
+    if (eventForDay.eventEndDate.innerText = "Invalid Date") {
+        document.getElementById("timeText2").style.display = "none"
+    }
+    if (eventForDay.eventEndDate != "Invalid Date") {
+        document.getElementById("timeText2").style.display = "block"
+        document.getElementById("timeText2").innerText = "Event finishes on " + eventForDay.eventEndDate
+    }
+        if (eventForDay.eventDescription) {
+        document.getElementById("descriptionText").innerText = "Description: " + eventForDay.eventDescription
+    }
+        if (eventForDay.eventEventType) {
+        document.getElementById("typeText").innerText = "Type of event: " + eventForDay.eventEventType
+    }} else {
         newEventModal.style.display = "block";
     }
 
@@ -191,7 +208,7 @@ function saveEvent() {
             eventEndDate: finishDateFormat,
             eventDescription: description.value,
             eventEventType: eventType.value
-            
+
 
         });
 
