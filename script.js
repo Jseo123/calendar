@@ -15,11 +15,13 @@ let initialDateGlobal = document.getElementById("initialDateGlobal");
 let endDateGlobal = document.getElementById("EndDateGlobal")
 let descriptiontGlobal = document.getElementById("descriptiontGlobal")
 let eventTypeGlobal = document.getElementById("eventTypeGlobal")
+let timeAdviseGlobal = document.getElementById("timeAdviseGlobal")
 
 let initialDate = document.getElementById("initialDate")
 let endDate = document.getElementById("endDate")
 let eventType = document.getElementById("eventType")
 let description = document.getElementById("description")
+let timeAdvise = document.getElementById("timeAdvise")
 
 const weekdays = [
     "Sunday",
@@ -31,6 +33,34 @@ const weekdays = [
     "Saturday",
 ];
 let yearGlobal = 0;
+
+function alerts() {
+
+
+    let cd = new Date();
+    const day = cd.getDate();
+    const month = cd.getMonth();
+    const year = cd.getFullYear();
+    const hour = cd.getHours();
+    const minutes = cd.getMinutes();
+
+    let AlertArray = timeAdviseGlobal.value;
+    let arrayFormat = `${day}/${month + 1}/${year}/${hour}/${minutes}`;
+
+    events.forEach(element => {
+      let x =  element.date
+      let z = element.hour
+
+     let m = z.split(":")
+      let format = z[0] + "/" + z[1]
+      let correctFormat = x+format
+
+      console.log(correctFormat)
+    });
+
+
+}
+
 
 function openModal(date) {
     clicked = date;
@@ -189,8 +219,8 @@ function saveEvent() {
             hour: initialDate.value,
             eventEndDate: finishDateFormat,
             eventDescription: description.value,
-            eventEventType: eventType.value
-            
+            eventEventType: eventType.value,
+            timeAdviseEvent: timeAdvise.value
 
         });
 
@@ -246,9 +276,11 @@ let r = dateFormat.split(", ")
         hour: r[1],
         eventEndDate: endDateFormat,
         eventDescription: descriptiontGlobal.value,
-        eventEventType: eventTypeGlobal.value
-    
+        eventEventType: eventTypeGlobal.value,
+        timeAdviseEvent: timeAdviseGlobal.value
     })
+
+    alerts()
 
     localStorage.setItem("events", JSON.stringify(events))
     closeModal()
@@ -275,6 +307,12 @@ function initButtons() {
         nav--;
         load();
     });
+
+
+
+
+//event listeners
+
 
     document.getElementById("saveButton").addEventListener("click", saveEvent);
     document
