@@ -212,7 +212,7 @@ function saveEventGlobal() {
 let r = dateFormat.split(", ")
  console.log(r)
 
- if (dateFormat) {
+ if (eventTitleInputGlobal.value && initialDateGlobal.value) {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
@@ -228,7 +228,8 @@ let r = dateFormat.split(", ")
     localStorage.setItem("events", JSON.stringify(events))
     closeModal()
 }else {
-    eventTitleInputGlobal.classList.add("error")
+    eventTitleInputGlobal.classList.add("error");
+    initialDateGlobal.classList.add("error");
 }
 
 
