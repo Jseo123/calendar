@@ -181,6 +181,10 @@ function saveEvent() {
 function endDateDisplay() {
         document.getElementById("endDate").classList.toggle("displayBlock")
 }
+function endDateDisplayGlobal() {
+    document.getElementById("EndDateGlobal").classList.toggle("displayBlock")
+}
+
 
 function saveEventGlobal() {
     let inputDate = initialDateGlobal.value;
