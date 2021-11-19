@@ -47,9 +47,9 @@
         <input id="eventTitleInput" placeholder="Event Title" maxlength="60">
         <label for="initialDate">Initial date: </label>
         <input type="datetime-local" id="initialDate" name="initialDate"><br>
-        <input type="checkbox" name="timeEndCheck" id="timeEndCheck">
-        <label for="timeInitial">End date</label><br>
-        <input type="datetime-local" id="EndDate" name="EndDate"><br>
+        <input type="checkbox" name="timeEndCheck" id="timeEndCheck" onclick="endDateDisplay()">
+        <label for="timeInitial">End date</label>   
+        <input type="datetime-local" id="endDate" name="endDate"><br>
         <input type="checkbox">
         <label for="timeEndCheck">Remind me when this event expires</label><br>
         <label for="timeAdvise">Time: </label>

@@ -25,7 +25,6 @@ let yearGlobal = 0;
 
 function openModal(date) {
     clicked = date;
-
     const eventForDay = events.find((e) => e.date === clicked);
 
     if (eventForDay) {
@@ -171,6 +170,10 @@ function saveEvent() {
     } else {
         eventTitleInput.classList.add("error");
     }
+}
+
+function endDateDisplay() {
+        document.getElementById("endDate").classList.toggle("displayBlock")
 }
 
 function saveEventGlobal() {
