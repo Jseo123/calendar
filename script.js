@@ -187,6 +187,7 @@ function closeModal() {
     backDrop.style.display = "none";
     eventTitleInput.value = "";
     clicked = null;
+    deleteInfoEvent()
     load();
 }
 
@@ -238,6 +239,13 @@ function endDateDisplayGlobal() {
     document.getElementById("EndDateGlobal").classList.toggle("displayBlock")
 }
 
+function deleteInfoEvent() {
+    eventTitleInputGlobal.value = ""
+    initialDateGlobal.value = ""
+    endDateGlobal.value = ""
+    descriptiontGlobal.value = ""
+}
+
 
 function saveEventGlobal() {
     let inputDate = initialDateGlobal.value;
@@ -267,7 +275,7 @@ function saveEventGlobal() {
 let r = dateFormat.split(", ")
  console.log(r)
 
- if (dateFormat) {
+ if (eventTitleInputGlobal.value && initialDateGlobal.value) {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
@@ -285,7 +293,8 @@ let r = dateFormat.split(", ")
     localStorage.setItem("events", JSON.stringify(events))
     closeModal()
 }else {
-    eventTitleInputGlobal.classList.add("error")
+    eventTitleInputGlobal.classList.add("error");
+    initialDateGlobal.classList.add("error");
 }
 
 
