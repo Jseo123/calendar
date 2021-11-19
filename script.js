@@ -209,7 +209,6 @@ function saveEventGlobal() {
     hour12: false
  })
 
- 
 let r = dateFormat.split(", ")
  console.log(r)
 
@@ -219,7 +218,10 @@ let r = dateFormat.split(", ")
     events.push({
         date: r[0],
         title: eventTitleInputGlobal.value,
-        hour: r[1]
+        hour: r[1],
+        eventEndDate: endDateFormat,
+        eventDescription: description,
+        eventEventType: eventType
     
     })
 
