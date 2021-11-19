@@ -149,6 +149,9 @@ cursor:pointer;
 #endDate {
   display: none;
 }
+#EndDateGlobal {
+  display: none;
+}
 .displayBlock {
   display: block !important;
 }
