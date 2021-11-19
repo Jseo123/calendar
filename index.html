@@ -45,10 +45,11 @@
         <h2>New Event</h2>
 
         <input id="eventTitleInput" placeholder="Event Title" maxlength="60">
-        <label for="initialDate">Initial date: </label>
-        <input type="datetime-local" id="initialDate" name="initialDate"><br>
+        <label for="initialDate">Initial time: </label>
+        <input type="time" id="initialDate" name="initialDate"><br>
         <input type="checkbox" name="timeEndCheck" id="timeEndCheck" onclick="endDateDisplay()">
-        <label for="timeInitial">End date</label>
+    "Sunday",
+    <label for="timeInitial">End date</label>
         <input type="datetime-local" id="endDate" name="endDate"><br>
         <input type="checkbox">
         <label for="timeEndCheck">Remind me when this event expires</label><br>
@@ -139,8 +140,8 @@
 
     <label for="initialDate">Initial date: </label>
     <input type="datetime-local" id="initialDateGlobal" name="initialDatetGlobal"><br>
-    <input type="checkbox" name="timeEndChecktGlobal" id="timeEndChecktGlobal">
-    <label for="timeInitialtGlobal">End date</label><br>
+    <input type="checkbox" name="timeEndChecktGlobal" id="timeEndChecktGlobal" onclick="endDateDisplayGlobal()">
+    <label for="timeInitialtGlobal">End date</label>
     <input type="datetime-local" id="EndDateGlobal" name="EndDatetGlobal"><br>
     <input type="checkbox">
     <label for="timeEndChecktGlobal">Remind me when this event expires</label><br>
