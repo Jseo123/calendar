@@ -11,7 +11,13 @@ const deleteEventModal = document.getElementById("deleteEventModal");
 const backDrop = document.getElementById("modalBackDrop");
 const eventTitleInput = document.getElementById("eventTitleInput");
 const eventTitleInputGlobal = document.getElementById("eventTitleInputGlobal");
-let initialDate = document.getElementById("initialDateGlobal");
+let initialDateGlobal = document.getElementById("initialDateGlobal");
+let endDateGlobal = document.getElementById("EndDateGlobal")
+let descriptiontGlobal = document.getElementById("descriptiontGlobal")
+let eventTypeGlobal = document.getElementById("eventTypeGlobal")
+
+
+
 const weekdays = [
     "Sunday",
     "Monday",
