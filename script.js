@@ -184,8 +184,21 @@ function endDateDisplay() {
 
 function saveEventGlobal() {
     let inputDate = initialDateGlobal.value;
+    let endDate = endDateGlobal.value;
+    let description = descriptiontGlobal.value;
+    let eventType = eventTypeGlobal.value;
 
+ let z = new Date(endDate)
  let x = new Date(inputDate)
+
+ let endDateFormat = z.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false
+ })
 
  let dateFormat = x.toLocaleDateString("en-GB", {
     year: "numeric",
@@ -195,15 +208,16 @@ function saveEventGlobal() {
     minute: "numeric",
     hour12: false
  })
+
  
- r = dateFormat.split(", ")
+let r = dateFormat.split(", ")
  console.log(r)
 
  if (dateFormat) {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
-        date: r[0], 
+        date: r[0],
         title: eventTitleInputGlobal.value,
         hour: r[1]
     
