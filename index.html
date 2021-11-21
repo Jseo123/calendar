@@ -7,7 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="details.css" />
     <script src="script.js" defer></script>
+    <script type="details.js" defer></script>
     <title>Calendar</title>
 </head>
 
@@ -40,7 +42,7 @@
 
     <div id="calendar"></div>
     </div>
-
+<!--Modal de event desde el mismo día-->
     <div id="newEventModal">
         <h2>New Event</h2>
 
@@ -92,7 +94,7 @@
 
     </div>
 
-    <!-- Modal Year -->
+    <!-- Modal all Year select-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -143,12 +145,11 @@
             </div>
         </div>
     </div>
-
+<!--modal event en el btn del header-->
     <div id="newEventModalGlobal">
         <h2>New Event</h2>
 
         <input id="eventTitleInputGlobal" placeholder="Event Title" maxlength="60">
-
     <label for="initialDate">Initial date: </label>
     <input type="datetime-local" id="initialDateGlobal" name="initialDatetGlobal"><br>
     <input type="checkbox" name="timeEndChecktGlobal" id="timeEndChecktGlobal" onclick="endDateDisplayGlobal()">
@@ -177,9 +178,26 @@
 
         <button id="cancelButton2">Cancel</button>
     </div>
-
 <div id="modalBackDrop" onclick="closeModal()">
-
+    <!--Modal de aviso, empieza evento en tanto min-->
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Your Event begginig soon.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
