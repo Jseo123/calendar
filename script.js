@@ -44,7 +44,7 @@ function openModal(date) {
     if (eventForDay.date) {
         document.getElementById("timeText1").innerText = "Event starts on " + eventForDay.date + ", " + eventForDay.hour
     }
-    if (eventForDay.eventEndDate.innerText = "Invalid Date") {
+    if (eventForDay.eventEndDate.inner = "Invalid Date") {
         document.getElementById("timeText2").style.display = "none"
     }
     if (eventForDay.eventEndDate != "Invalid Date") {
