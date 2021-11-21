@@ -45,17 +45,21 @@ function alerts() {
     const minutes = cd.getMinutes();
 
     let AlertArray = timeAdviseGlobal.value;
-    let arrayFormat = `${day}/${month + 1}/${year}/${hour}/${minutes}`;
+    let arrayFormat = `${day}/${month + 1}/${year}`;
 
     events.forEach(element => {
       let x =  element.date
       let z = element.hour
 
      let m = z.split(":")
-      let format = z[0] + "/" + z[1]
-      let correctFormat = x+format
+      let format =   m[0] + "/" + m[1];
+      let correctFormat = x + "/" + format
 
-      console.log(correctFormat)
+      const eventCheck = events.find((e) => e.date === arrayFormat)
+      if (eventCheck) {
+        console.log("Eureka")
+      }
+
     });
 
 
