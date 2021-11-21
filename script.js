@@ -22,6 +22,8 @@ let endDate = document.getElementById("endDate")
 let eventType = document.getElementById("eventType")
 let description = document.getElementById("description")
 let timeAdvise = document.getElementById("timeAdvise")
+const alertModal = document.getElementById("alertModal")
+let counter = 0;
 
 const weekdays = [
     "Sunday",
@@ -34,6 +36,57 @@ const weekdays = [
 ];
 let yearGlobal = 0;
 
+function  eventCheckFntion(m, element, x, z) {
+    let today = new Date ();
+    let hour = today.getHours();
+    let minute = today.getMinutes();
+    let time = today.getTime();
+    let AlertArray = timeAdviseGlobal.value;
+    let timeMinutes = time / 60000;
+    let a = x.split("/")
+    let b = a.reverse();
+    let l = b[0]+ "/" + b[1] + "/" +  b[2]
+
+    let s = l + " " + z
+    let y = new Date(s)
+    let todayTime = timeMinutes.toString().split(".")
+    let dayHour = y.getTime() / 60000 ;
+    let currentFtime = parseInt(todayTime[0])
+    let warningTime = dayHour - AlertArray
+
+
+setInterval(() => {
+    console.log(currentFtime + "Current")
+    if(currentFtime === warningTime){
+        if (counter < 1){
+ callAlertModal(AlertArray)
+counter++;
+        }
+            }
+}, 5000);
+
+
+    
+
+}
+
+
+function callAlertModal(AlertArray) {
+    let para = document.createElement("p");
+    para.innerText = "Your evenet is about to start in " + AlertArray + " minutes!"
+    alertModal.appendChild(para)
+
+    let deleteM = document.createElement("button")
+ deleteM.innerText = "x"
+    alertModal.appendChild(deleteM)
+
+    deleteM.addEventListener("click", (e) => {
+        alertModal.removeChild(para);
+        alertModal.removeChild(deleteM);
+    })
+}
+
+
 function alerts() {
 
 
@@ -44,35 +97,55 @@ function alerts() {
     const hour = cd.getHours();
     const minutes = cd.getMinutes();
 
-    let AlertArray = timeAdviseGlobal.value;
-    let arrayFormat = `${day}/${month + 1}/${year}/${hour}/${minutes}`;
+    let arrayFormat = `${day}/${month + 1}/${year}`;
 
     events.forEach(element => {
       let x =  element.date
       let z = element.hour
 
      let m = z.split(":")
-      let format = z[0] + "/" + z[1]
-      let correctFormat = x+format
+      let format =   m[0] + "/" + m[1];
+      let correctFormat = x + "/" + format
 
-      console.log(correctFormat)
+      const eventCheck = events.find((e) => e.date === arrayFormat)
+      if (eventCheck) {
+            eventCheckFntion(m, element, x, z)
+       
+      }
+
     });
 
 
 }
 
 
+
 function openModal(date) {
     clicked = date;
     const eventForDay = events.find((e) => e.date === clicked);
-
     if (eventForDay) {
-        document.getElementById("eventText").innerText = eventForDay.title;
+    if (eventForDay.title) {
+        document.getElementById("titleText").innerText = eventForDay.title;
         deleteEventModal.style.display = "block";
-    } else {
+    }
+    if (eventForDay.date) {
+        document.getElementById("timeText1").innerText = "Event starts on " + eventForDay.date + ", " + eventForDay.hour
+    }
+    if (eventForDay.eventEndDate.inner = "Invalid Date") {
+        document.getElementById("timeText2").style.display = "none"
+    }
+    if (eventForDay.eventEndDate != "Invalid Date") {
+        document.getElementById("timeText2").style.display = "block"
+        document.getElementById("timeText2").innerText = "Event finishes on " + eventForDay.eventEndDate
+    }
+        if (eventForDay.eventDescription) {
+        document.getElementById("descriptionText").innerText = "Description: " + eventForDay.eventDescription
+    }
+        if (eventForDay.eventEventType) {
+        document.getElementById("typeText").innerText = "Type of event: " + eventForDay.eventEventType
+    }} else {
         newEventModal.style.display = "block";
     }
-
     backDrop.style.display = "block";
 }
 
@@ -112,7 +185,7 @@ function load() {
     if (nav !== 0) {
         dt.setMonth(new Date().getMonth() + nav);
     }
-
+    
     const day = dt.getDate();
     const month = dt.getMonth();
     const year = dt.getFullYear();
@@ -174,7 +247,9 @@ function load() {
             daySquare.classList.add("padding");
         }
         calendar.appendChild(daySquare);
+    
     }
+    alerts()
 }
 
 
@@ -187,7 +262,6 @@ function closeModal() {
     backDrop.style.display = "none";
     eventTitleInput.value = "";
     clicked = null;
-    deleteInfoEvent()
     load();
 }
 
@@ -198,6 +272,7 @@ document.addEventListener('keydown', function(esc){
 
 function saveEvent() {
     let finishDate = endDate.value
+
 
  let b = new Date(finishDate)
 
@@ -239,13 +314,6 @@ function endDateDisplayGlobal() {
     document.getElementById("EndDateGlobal").classList.toggle("displayBlock")
 }
 
-function deleteInfoEvent() {
-    eventTitleInputGlobal.value = ""
-    initialDateGlobal.value = ""
-    endDateGlobal.value = ""
-    descriptiontGlobal.value = ""
-}
-
 
 function saveEventGlobal() {
     let inputDate = initialDateGlobal.value;
@@ -275,11 +343,20 @@ function saveEventGlobal() {
 let r = dateFormat.split(", ")
  console.log(r)
 
- if (eventTitleInputGlobal.value && initialDateGlobal.value) {
+ const day = x.getDate();
+ const month = x.getMonth();
+ const year = x.getFullYear();
+ 
+ const correctDate =  `${day}/${month + 1}/${year}`
+
+console.log(correctDate)
+
+
+ if (dateFormat) {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
-        date: r[0],
+        date: correctDate,
         title: eventTitleInputGlobal.value,
         hour: r[1],
         eventEndDate: endDateFormat,
@@ -288,13 +365,11 @@ let r = dateFormat.split(", ")
         timeAdviseEvent: timeAdviseGlobal.value
     })
 
-    alerts()
 
     localStorage.setItem("events", JSON.stringify(events))
     closeModal()
 }else {
-    eventTitleInputGlobal.classList.add("error");
-    initialDateGlobal.classList.add("error");
+    eventTitleInputGlobal.classList.add("error")
 }
 
 
@@ -346,4 +421,4 @@ initButtons();
 
 load();
 
-console.log(events)
+console.log()

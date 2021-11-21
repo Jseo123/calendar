@@ -26,8 +26,32 @@ body {
   color: white;
   grid-template-columns: repeat(5, 1fr);
 }
+<<<<<<< HEAD
 #monthDisplay {
   display: contents;
+=======
+
+.alertModal {
+  display: block;
+  position:absolute;
+  background:#75cbecab;
+  color:white;
+  top: 50%
+}
+
+.alertModal2 {
+  display: none;
+}
+
+#header{
+  padding: 10px;
+  color: #f8f1f1;
+  background-color: thistle;
+  font-size: 26px;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: space-between;
+>>>>>>> 57ecb52332935ea7adc0196c126b8a7a1fbd4ffd
 }
 
  button {
