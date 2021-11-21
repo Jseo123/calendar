@@ -282,11 +282,20 @@ function saveEventGlobal() {
 let r = dateFormat.split(", ")
  console.log(r)
 
+ const day = x.getDate();
+ const month = x.getMonth();
+ const year = x.getFullYear();
+ 
+ const correctDate =  `${day}/${month + 1}/${year}`
+
+console.log(correctDate)
+
+
  if (dateFormat) {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
-        date: r[0],
+        date: correctDate,
         title: eventTitleInputGlobal.value,
         hour: r[1],
         eventEndDate: endDateFormat,
