@@ -26,11 +26,9 @@ body {
   color: white;
   grid-template-columns: repeat(5, 1fr);
 }
-<<<<<<< HEAD
 #monthDisplay {
   display: contents;
-=======
-
+}
 .alertModal {
   display: block;
   position:absolute;
@@ -51,7 +49,6 @@ body {
   font-family: sans-serif;
   display: flex;
   justify-content: space-between;
->>>>>>> 57ecb52332935ea7adc0196c126b8a7a1fbd4ffd
 }
 
  button {
