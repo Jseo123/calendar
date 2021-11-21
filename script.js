@@ -22,6 +22,7 @@ let endDate = document.getElementById("endDate")
 let eventType = document.getElementById("eventType")
 let description = document.getElementById("description")
 let timeAdvise = document.getElementById("timeAdvise")
+let counter = 0;
 
 const weekdays = [
     "Sunday",
@@ -51,17 +52,20 @@ function  eventCheckFntion(m, element, x, z) {
     let dayHour = y.getTime() / 60000 ;
     let currentFtime = parseInt(todayTime[0])
     let warningTime = dayHour - AlertArray
-console.log(currentFtime + "Current")
 
-for (let index = 0; index < 1;) {
+
+setInterval(() => {
+    console.log(currentFtime + "Current")
+    if(currentFtime === warningTime){
+        if (counter < 1){
+console.log("eu fucking reka")
+counter++;
+        }
+            }
+}, 5000);
+
+
     
-if(currentFtime === warningTime){
-    console.log("Eureka")
-    index++;
-    
-    }
-    
-}
 
 }
 
@@ -87,9 +91,8 @@ function alerts() {
 
       const eventCheck = events.find((e) => e.date === arrayFormat)
       if (eventCheck) {
-        setInterval(() => {
             eventCheckFntion(m, element, x, z)
-        },5000 );
+       
       }
 
     });
