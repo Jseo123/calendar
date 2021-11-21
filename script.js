@@ -193,6 +193,7 @@ function load() {
             daySquare.classList.add("padding");
         }
         calendar.appendChild(daySquare);
+    
     }
 }
 
@@ -365,4 +366,4 @@ initButtons();
 
 load();
 
-console.log(events)
+console.log()
