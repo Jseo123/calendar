@@ -44,7 +44,6 @@ function alerts() {
     const hour = cd.getHours();
     const minutes = cd.getMinutes();
 
-    let AlertArray = timeAdviseGlobal.value;
     let arrayFormat = `${day}/${month + 1}/${year}`;
 
     events.forEach(element => {
@@ -57,7 +56,9 @@ function alerts() {
 
       const eventCheck = events.find((e) => e.date === arrayFormat)
       if (eventCheck) {
-        console.log("Eureka")
+        setInterval(() => {
+            eventCheckFntion(m, element, x, z)
+        },5000 );
       }
 
     });
@@ -65,6 +66,19 @@ function alerts() {
 
 }
 
+function  eventCheckFntion(m, element, x, z) {
+let today = new Date ();
+let hour = today.getHours();
+let minute = today.getMinutes();
+let time = today.getTime();
+let AlertArray = timeAdviseGlobal.value;
+let timeMinutes = time / 60000;
+let format = x + ", " + z;
+let elementDate = new Date (format)
+
+console.log(elementDate)
+
+}
 
 function openModal(date) {
     clicked = date;
