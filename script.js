@@ -191,8 +191,6 @@ function saveEvent() {
             eventEndDate: finishDateFormat,
             eventDescription: description.value,
             eventEventType: eventType.value
-            
-
         });
 
         localStorage.setItem("events", JSON.stringify(events));
