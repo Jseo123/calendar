@@ -22,6 +22,7 @@ let endDate = document.getElementById("endDate")
 let eventType = document.getElementById("eventType")
 let description = document.getElementById("description")
 let timeAdvise = document.getElementById("timeAdvise")
+const alertModal = document.getElementById("alertModal")
 let counter = 0;
 
 const weekdays = [
@@ -58,7 +59,7 @@ setInterval(() => {
     console.log(currentFtime + "Current")
     if(currentFtime === warningTime){
         if (counter < 1){
-console.log("eu fucking reka")
+ callAlertModal(AlertArray)
 counter++;
         }
             }
@@ -68,6 +69,23 @@ counter++;
     
 
 }
+
+
+function callAlertModal(AlertArray) {
+    let para = document.createElement("p");
+    para.innerText = "Your evenet is about to start in " + AlertArray + " minutes!"
+    alertModal.appendChild(para)
+
+    let deleteM = document.createElement("button")
+ deleteM.innerText = "x"
+    alertModal.appendChild(deleteM)
+
+    deleteM.addEventListener("click", (e) => {
+        alertModal.removeChild(para);
+        alertModal.removeChild(deleteM);
+    })
+}
+
 
 function alerts() {
 

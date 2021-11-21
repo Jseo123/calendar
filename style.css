@@ -16,6 +16,19 @@ button{
   border-radius: 5px;
   color: white;
 }
+
+.alertModal {
+  display: block;
+  position:absolute;
+  background:#75cbecab;
+  color:white;
+  top: 50%
+}
+
+.alertModal2 {
+  display: none;
+}
+
 #header{
   padding: 10px;
   color: #f8f1f1;
