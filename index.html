@@ -48,7 +48,6 @@
         <label for="initialDate">Initial time: </label>
         <input type="time" id="initialDate" name="initialDate"><br>
         <input type="checkbox" name="timeEndCheck" id="timeEndCheck" onclick="endDateDisplay()">
-    "Sunday",
     <label for="timeInitial">End date</label>
         <input type="datetime-local" id="endDate" name="endDate"><br>
         <input type="checkbox">
@@ -57,10 +56,9 @@
         <select name="timeAdvise" id="timeAdvise">
             <option value="5">5 minutes</option>
             <option value="10">10 minutes</option>
+            <option value="15">15 minutes</option>
             <option value="30">30 minutes</option>
-            <option value="1">1 hour</option>
-            <option value="2">2 hours</option>
-            <option value="5">5 hours</option>
+            <option value="60">1 hour</option>
         </select><br>
         <label for="description">Description</label>
         <input type="text" name="description" id="description"><br>
@@ -75,10 +73,23 @@
     </div>
 
     <div id="deleteEventModal">
+
         <h2>Event</h2>
-        <p id="eventText"></p>
+
+        <p id="titleText"></p>
+
+        <p id="timeText1"></p>
+
+        <p id="timeText2"></p>
+
+        <p id="descriptionText"></p>
+
+        <p id="typeText"></p>
+
         <button id="deleteButton">Delete</button>
+
         <button id="closeButton">Close</button>
+
     </div>
 
     <!-- Modal all Year select-->
@@ -148,10 +159,9 @@
     <select name="timeAdvisetGlobal" id="timeAdviseGlobal">
         <option value="5">5 minutes</option>
         <option value="10">10 minutes</option>
+        <option value="15">15 minutes</option>
         <option value="30">30 minutes</option>
-        <option value="1">1 hour</option>
-        <option value="2">2 hours</option>
-        <option value="5">5 hours</option>
+        <option value="60">1 hour</option>
     </select><br>
     <label for="descriptiontGlobal">Description</label>
     <input type="text" name="descriptiontGlobal" id="descriptiontGlobal"><br>
