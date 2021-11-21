@@ -34,6 +34,37 @@ const weekdays = [
 ];
 let yearGlobal = 0;
 
+function  eventCheckFntion(m, element, x, z) {
+    let today = new Date ();
+    let hour = today.getHours();
+    let minute = today.getMinutes();
+    let time = today.getTime();
+    let AlertArray = timeAdviseGlobal.value;
+    let timeMinutes = time / 60000;
+    let a = x.split("/")
+    let b = a.reverse();
+    let l = b[0]+ "/" + b[1] + "/" +  b[2]
+
+    let s = l + " " + z
+    let y = new Date(s)
+    let todayTime = timeMinutes.toString().split(".")
+    let dayHour = y.getTime() / 60000 ;
+    let currentFtime = parseInt(todayTime[0])
+    let warningTime = dayHour - AlertArray
+console.log(currentFtime + "Current")
+
+for (let index = 0; index < 1;) {
+    
+if(currentFtime === warningTime){
+    console.log("Eureka")
+    index++;
+    
+    }
+    
+}
+
+}
+
 function alerts() {
 
 
@@ -44,7 +75,6 @@ function alerts() {
     const hour = cd.getHours();
     const minutes = cd.getMinutes();
 
-    let AlertArray = timeAdviseGlobal.value;
     let arrayFormat = `${day}/${month + 1}/${year}`;
 
     events.forEach(element => {
@@ -57,13 +87,16 @@ function alerts() {
 
       const eventCheck = events.find((e) => e.date === arrayFormat)
       if (eventCheck) {
-        console.log("Eureka")
+        setInterval(() => {
+            eventCheckFntion(m, element, x, z)
+        },5000 );
       }
 
     });
 
 
 }
+
 
 
 function openModal(date) {
@@ -131,7 +164,7 @@ function load() {
     if (nav !== 0) {
         dt.setMonth(new Date().getMonth() + nav);
     }
-
+    
     const day = dt.getDate();
     const month = dt.getMonth();
     const year = dt.getFullYear();
@@ -195,6 +228,7 @@ function load() {
         calendar.appendChild(daySquare);
     
     }
+    alerts()
 }
 
 
@@ -217,6 +251,7 @@ document.addEventListener('keydown', function(esc){
 
 function saveEvent() {
     let finishDate = endDate.value
+
 
  let b = new Date(finishDate)
 
@@ -309,7 +344,6 @@ console.log(correctDate)
         timeAdviseEvent: timeAdviseGlobal.value
     })
 
-    alerts()
 
     localStorage.setItem("events", JSON.stringify(events))
     closeModal()
