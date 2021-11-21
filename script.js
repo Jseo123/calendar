@@ -51,12 +51,18 @@ function  eventCheckFntion(m, element, x, z) {
     let dayHour = y.getTime() / 60000 ;
     let currentFtime = parseInt(todayTime[0])
     let warningTime = dayHour - AlertArray
-
 console.log(currentFtime + "Current")
+
+for (let index = 0; index < 1;) {
+    
 if(currentFtime === warningTime){
     console.log("Eureka")
+    index++;
     
     }
+    
+}
+
 }
 
 function alerts() {
