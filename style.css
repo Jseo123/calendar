@@ -219,14 +219,11 @@ body {
       background-size: 20px 20px;
       background-image: repeating-linear-gradient(45deg, #19052a 0, #6217a7 2px, #000000 0, #000000 50%);
   }
-  button{
-    
-  }
+ 
       #container {
         width: auto;
         margin: inherit;
     }
-    
     .day {
       width: auto;
       display: grid;
@@ -305,8 +302,7 @@ body {
     left: auto;
     font-family: sans-serif;
   }
-  .btn-primary {
-  }
+
 
   button  {
     margin: auto;
