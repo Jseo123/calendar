@@ -15,11 +15,13 @@ let initialDateGlobal = document.getElementById("initialDateGlobal");
 let endDateGlobal = document.getElementById("EndDateGlobal")
 let descriptiontGlobal = document.getElementById("descriptiontGlobal")
 let eventTypeGlobal = document.getElementById("eventTypeGlobal")
+let timeAdviseGlobal = document.getElementById("timeAdviseGlobal")
 
 let initialDate = document.getElementById("initialDate")
 let endDate = document.getElementById("endDate")
 let eventType = document.getElementById("eventType")
 let description = document.getElementById("description")
+let timeAdvise = document.getElementById("timeAdvise")
 
 const weekdays = [
     "Sunday",
@@ -32,31 +34,42 @@ const weekdays = [
 ];
 let yearGlobal = 0;
 
+function alerts() {
+
+
+    let cd = new Date();
+    const day = cd.getDate();
+    const month = cd.getMonth();
+    const year = cd.getFullYear();
+    const hour = cd.getHours();
+    const minutes = cd.getMinutes();
+
+    let AlertArray = timeAdviseGlobal.value;
+    let arrayFormat = `${day}/${month + 1}/${year}/${hour}/${minutes}`;
+
+    events.forEach(element => {
+      let x =  element.date
+      let z = element.hour
+
+     let m = z.split(":")
+      let format = z[0] + "/" + z[1]
+      let correctFormat = x+format
+
+      console.log(correctFormat)
+    });
+
+
+}
+
+
 function openModal(date) {
     clicked = date;
     const eventForDay = events.find((e) => e.date === clicked);
 
     if (eventForDay) {
-    if (eventForDay.title) {
-        document.getElementById("titleText").innerText = eventForDay.title;
+        document.getElementById("eventText").innerText = eventForDay.title;
         deleteEventModal.style.display = "block";
-    }
-    if (eventForDay.date) {
-        document.getElementById("timeText1").innerText = "Event starts on " + eventForDay.date + ", " + eventForDay.hour
-    }
-    if (eventForDay.eventEndDate.inner = "Invalid Date") {
-        document.getElementById("timeText2").style.display = "none"
-    }
-    if (eventForDay.eventEndDate != "Invalid Date") {
-        document.getElementById("timeText2").style.display = "block"
-        document.getElementById("timeText2").innerText = "Event finishes on " + eventForDay.eventEndDate
-    }
-        if (eventForDay.eventDescription) {
-        document.getElementById("descriptionText").innerText = "Description: " + eventForDay.eventDescription
-    }
-        if (eventForDay.eventEventType) {
-        document.getElementById("typeText").innerText = "Type of event: " + eventForDay.eventEventType
-    }} else {
+    } else {
         newEventModal.style.display = "block";
     }
 
@@ -207,8 +220,8 @@ function saveEvent() {
             hour: initialDate.value,
             eventEndDate: finishDateFormat,
             eventDescription: description.value,
-            eventEventType: eventType.value
-
+            eventEventType: eventType.value,
+            timeAdviseEvent: timeAdvise.value
 
         });
 
@@ -262,7 +275,7 @@ function saveEventGlobal() {
 let r = dateFormat.split(", ")
  console.log(r)
 
- if (dateFormat) {
+ if (eventTitleInputGlobal.value && initialDateGlobal.value) {
     eventTitleInputGlobal.classList.remove("error")
 
     events.push({
@@ -271,15 +284,21 @@ let r = dateFormat.split(", ")
         hour: r[1],
         eventEndDate: endDateFormat,
         eventDescription: descriptiontGlobal.value,
-        eventEventType: eventTypeGlobal.value
-    
+        eventEventType: eventTypeGlobal.value,
+        timeAdviseEvent: timeAdviseGlobal.value
     })
+
+    alerts()
 
     localStorage.setItem("events", JSON.stringify(events))
     closeModal()
 }else {
-    eventTitleInputGlobal.classList.add("error")
-}}
+    eventTitleInputGlobal.classList.add("error");
+    initialDateGlobal.classList.add("error");
+}
+
+
+}
 
 function deleteEvent() {
     events = events.filter((e) => e.date !== clicked);
@@ -297,6 +316,12 @@ function initButtons() {
         nav--;
         load();
     });
+
+
+
+
+//event listeners
+
 
     document.getElementById("saveButton").addEventListener("click", saveEvent);
     document
