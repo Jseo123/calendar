@@ -22,7 +22,7 @@ body {
 
 #eventGlobal {
   background: #571a93;
-  border: none;
+  border-style: outset;
 }
 #header {
   padding: 10px 10px;
