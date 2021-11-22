@@ -391,4 +391,13 @@ button {
   font-size: 19px;
   font-family: system-ui;
 }
+.event {
+  background-color: transparent;
+  color: #894cc3;
+  border-radius: 5px;
+  overflow: initial;
+  border: 1px solid #894cc3;
+  font-size: 12px;
+  margin-top: 10px;
+}
 }
