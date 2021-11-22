@@ -114,6 +114,7 @@ button {
   border: none;
   color: white;
   filter: drop-shadow(0px 0px 6px #02020247);
+  z-index: 90;
 }
 
 .day + #currentDay {
@@ -122,15 +123,7 @@ button {
   color: #eeddff;
   filter: drop-shadow(0px 0px 6px #02020247);
 }
-.event {
-  font-size: 10px;
-  padding: 3px;
-  background-color: #58bae4;
-  color: white;
-  border-radius: 5px;
-  max-height: 55px;
-  overflow: hidden;
-}
+
 .padding {
   cursor: default !important;
   background-color: #FFFCFF !important;
@@ -211,7 +204,19 @@ button {
 .displayBlock {
   display: block !important;
 } 
- 
+
+.event {
+  background-color: #894cc3;
+  color: white;
+  border-radius: 5px;
+  max-height: fit-content;
+  overflow: auto;
+  position: fixed;
+  width: 10%;
+  font-size: x-small;
+  margin-top: 30px;
+  margin-left: 20px;
+}
 
 
 
