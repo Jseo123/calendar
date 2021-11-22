@@ -261,6 +261,7 @@ function closeModal() {
     newEventModalGlobal.style.display = "none";
     backDrop.style.display = "none";
     eventTitleInput.value = "";
+    description.value = ''
     clicked = null;
     load();
 }
