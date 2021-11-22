@@ -47,6 +47,7 @@ button {
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
   color: #fff;
+  padding: 10px 10px;
 }
 
 
@@ -57,7 +58,7 @@ button {
   border: 0;
   border-radius: 4px;
   color: #fff;
-  box-shadow: 0 10px 14px #100506;
+  
 }
 
 #container {
@@ -116,7 +117,7 @@ button {
 }
 
 .day + #currentDay {
-  background-color: #431174;
+  background-color: #8a30e1;
   border: none;
   color: #eeddff;
   filter: drop-shadow(0px 0px 6px #02020247);
@@ -135,18 +136,20 @@ button {
   background-color: #FFFCFF !important;
   box-shadow: none !important;
 }
-#newEventModal, #deleteEventModal, #newEventModalGlobal{
-  display: none;
-  z-index: 20;
-  padding: 25px;
-  background-color: #e8f4fa;
-  box-shadow: 0px 0px 3px black;
-  border-radius: 5px;
-  width: 350px;
-  top: 100px;
-  left: calc(50% - 175px);
-  position: absolute;
-  font-family: sans-serif;
+#newEventModal, #deleteEventModal, #newEventModalGlobal {
+  
+    z-index: 20;
+    display:none;
+    border-radius: 5px;
+    width: 360px;
+    top: 100px;
+    left: calc(50% - 175px);
+    position: absolute;
+    font-family: sans-serif;
+    background: linear-gradient(to left, rgb(72, 95, 237), rgba(255, 44, 118, 0.25)), rgb(72, 95, 237);
+    color: rgb(255, 255, 255);
+    padding: 37px 40px;
+    box-shadow: rgb(72 95 237) 0px 0px 40px -9px;
 }
 #eventTitleInput, #eventTitleInputGlobal {
   padding: 10px;
@@ -162,10 +165,19 @@ button {
   border: 2px solid red;
 }
 #cancelButton, #deleteButton, #cancelButton2 {
-  background-color: #d36c6c;
+  
+  margin: auto;
+  padding: 1px 22px;
+  margin-top: 10px;
+  background: #321458;
+  border-color: #4d1f8b;
 }
-#saveButton, #closeButton, #saveButton2{
-  background-color: #92a1d1;
+#saveButton, #closeButton, #saveButton2 {
+  margin: auto;
+  padding: 1px 22px;
+  margin-top: 10px;
+  background: #e8435a;
+  border-color: #f76075;
 }
 #eventText {
   font-size: 14px;
@@ -180,10 +192,14 @@ button {
   position: absolute;
   background-color: rgb(0 0 0 / 55%);
 }
-.modal-body, .modal-footer{
+.modal-body, .modal-footer {
   color: black;
-  background-color:rgb(207, 202, 202);
+  background-color: rgb(207, 202, 202);
   text-align: center;
+  background: linear-gradient(to left, rgb(72, 95, 237), rgba(255, 44, 118, 0.25)), rgb(72, 95, 237);
+  color: rgb(255, 255, 255);
+  padding: 37px 40px;
+  box-shadow: rgb(72 95 237) 0px 0px 40px -9px;
 }
 
 #endDate {
@@ -212,11 +228,7 @@ button {
   }
 } */
 
-@media screen and (max-width: 800px) {
-  #container {
-    width: 770%;
-  }
-}
+
 
 @media only screen 
   and (min-device-width: 375px) 
@@ -260,14 +272,14 @@ button {
     filter: drop-shadow(0px 0px 6px #02020247);
   }
   #header {
-    padding: 10px 10px;
+    padding: 20px 5px;
     background-color: #16050575;
     font-family: sans-serif;
     display: grid;
-    justify-content: space-between;
+    justify-content: center;
     border-top: 1px solid #4c1282;
     border: 0px;
-    border-radius: 5px;
+    border-radius: 10px 10px 0px 0px;
     color: white;
     grid-template-columns: repeat(5, 1fr);
 }
@@ -275,23 +287,23 @@ button {
   border: 0px;
   border-radius: 5px;
   position: inherit;
-  margin: auto;
   padding: 5px 10px;
 }
   
-  #weekdays div {
-    text-align: center;
-    background: blueviolet;
-    padding: 10px 0px;
-    font-size: 11px;
-    width: 100%;
-    border-left: #573c70 1px solid;
-    font-family: system-ui;
+#weekdays div {
+  text-align: center;
+  background: #892ee14f;
+  padding: 10px 0px;
+  width: 100%;
+  border-left: #573c70 1px solid;
+  font-family: system-ui;
+  filter: drop-shadow(2px 4px 6px black);
 }
   #weekdays {
     color: #ffffff;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    font-size: 10px;
 }
   #calendar {
     display: grid;
@@ -320,11 +332,15 @@ button {
   }
 
 
-  button  {
-    margin: auto;
-    background-color: #7882a5;
-    font-size: 15px;
-  }
+  button {
+    border-radius: 5px;
+    margin: 0px 5px;
+    background-color: #8a2de1;
+    border-color: #8a53bf;
+    color: #fff;
+    padding: 10px 5px
+    
+}
 
   .btn {
     display: inline-block;
@@ -347,27 +363,19 @@ button {
     font-size: 15px;
 }
 .btn-primary {
-  color: #fdb900;
-  box-shadow: 0 0px 0px #100506;
-  margin-left: auto;
-  margin-top: auto;
+  background: #e8435a;
+  color: white;
 }
 #eventGlobal {
   font-size: 12px;
   line-height: 12px;
-  background: #e9435a;
-  padding: 10px 5px;
+  background: #892ee1;
 }
 #backButton {
   padding: 5px 8px;
   font-size: 15px;
 }
-#nextButton {
-  padding: 5px 15px;
-  font-size: 15px;
-  background-color: #fdb900;
-  color: #2b2332;
-}
+
 
 #monthDisplay {
   display: contents;
